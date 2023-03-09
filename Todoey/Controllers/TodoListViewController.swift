@@ -10,7 +10,6 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
 
-//    var itemArray = ["Eat", "Study", "Take a Nap"]
     var itemArray = [Item]()
     
     let defaults = UserDefaults.standard
@@ -20,7 +19,6 @@ class TodoListViewController: UITableViewController {
         
         let newItem = Item()
         newItem.title = "Eat"
-        newItem.done = true
         itemArray.append(newItem)
         
         let newItem2 = Item()
@@ -30,9 +28,10 @@ class TodoListViewController: UITableViewController {
         let newItem3 = Item()
         newItem3.title = "Take a nap"
         itemArray.append(newItem)
-//        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-//            itemArray = items
-//        }
+        
+        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
+            itemArray = items
+        }
         
     }
 
@@ -61,13 +60,7 @@ class TodoListViewController: UITableViewController {
         
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-//
-                
-//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//        } else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//        }
+
         tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
