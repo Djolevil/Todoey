@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
+//  TodoListViewController.swift
 //  Todoey
 //
-//  Created by Philipp Muellauer on 02/12/2019.
-//  Copyright © 2019 App Brewery. All rights reserved.
+//  Created by Djordje Knezevic
+//  Copyright © 2023 App Brewery. All rights reserved.
 //
 
 import UIKit
