@@ -56,7 +56,8 @@ class TodoListViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write {
-                    item.done = !item.done
+                    realm.delete(item)
+//                    item.done = !item.done
                 }
             } catch {
                 print("Error saving done status, \(error)")
@@ -64,9 +65,6 @@ class TodoListViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        //        todoItems[indexPath.row].done = !todoItems[indexPath.row].done
-        //
-        //        saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -109,16 +107,7 @@ class TodoListViewController: UITableViewController {
         
     }
     //MARK: - Model Manipulation Methods
-    //    func saveItems() {
-    //        let encoder = PropertyListEncoder()
-    //        do {
-    //            try context.save()
-    //        } catch {
-    //            print("Error saving context \(error)")
-    //        }
-    //
-    //        self.tableView.reloadData()
-    //    }
+  
     
     func loadItems() {
         
