@@ -22,7 +22,7 @@ class CategoryViewController: SwipeTableViewController {
         loadCategories()
         
         tableView.separatorStyle = .none
-                
+        
     }
     
     //MARK: - TableView Datasource Methods
@@ -37,9 +37,10 @@ class CategoryViewController: SwipeTableViewController {
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories added yet!"
         
-        cell.backgroundColor = UIColor.randomFlat()
+        cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].color ?? "1D9BF6")
         
         return cell
+        
     }
     
     //MARK: - TableView Delegate Methods
@@ -80,7 +81,7 @@ class CategoryViewController: SwipeTableViewController {
     //MARK: - Delete Data From Swipe
     
     override func updateModel(at indexPath: IndexPath) {
-                
+        
         if let categoryForDeletion = self.categories?[indexPath.row] {
             do {
                 try self.realm.write {
@@ -103,6 +104,7 @@ class CategoryViewController: SwipeTableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             let newCategory = Category()
             newCategory.name = textField.text!
+            newCategory.color = UIColor.randomFlat().hexValue()
             
             self.save(category: newCategory)
         }
